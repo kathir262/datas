@@ -1,0 +1,31 @@
+from sklearn import tree
+from sklearn.svm import SVC
+from sklearn.linear_model import Perceptron
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score 
+import numpy as np
+print("hello")
+x = [[181, 80, 44], [177, 70, 43], [160, 60, 38], [154, 54, 37], [166, 65, 40], [190, 90, 47], [175, 64, 39],
+     [177, 70, 40], [159, 55, 37], [171, 75, 42], [181, 85, 43]]
+
+y = ['male', 'male', 'female', 'female', 'male', 'male', 'female', 'female', 'female', 'male', 'male']
+
+ctree = tree.DecisionTreeClassifier()
+csvm=SVC()
+cper=Perceptron()
+cnn=KNeighborsClassifier()
+
+ctree.fit(x,y)
+csvm.fit(x,y)
+cper.fit(x,y)
+cnn.fit(x,y)
+
+tout=ctree.predict(x)
+sout=csvm.predict(x)
+pout=cper.predict(x)
+nout=cnn.predict(x)
+
+print("deisiontree acc is ", accuracy_score(y,tout)*100)
+print("svm acc is ", accuracy_score(y,sout)*100)
+print("perceptron acc is ", accuracy_score(y,pout)*100)
+print("knn acc is ", accuracy_score(y,nout)*100)
